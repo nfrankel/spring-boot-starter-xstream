@@ -5,7 +5,7 @@
 
 	<groupId>ch.frankel.boot</groupId>
 	<artifactId>spring-boot-starter-xstream</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
