@@ -3,9 +3,11 @@ package ch.frankel.boot.xstream;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.io.HierarchicalStreamDriver;
+import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 import com.thoughtworks.xstream.io.xml.XppDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +17,12 @@ import java.util.Optional;
 
 @Configuration
 public class XStreamAutoConfiguration {
+
+    @Bean
+    @ConditionalOnProperty(value = "ch.frankel.boot.xstream.json", havingValue = "true")
+    public HierarchicalStreamDriver driver() {
+        return new JsonHierarchicalStreamDriver();
+    }
 
     @Bean
     @ConditionalOnMissingBean(XStream.class)
